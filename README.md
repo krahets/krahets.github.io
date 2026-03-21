@@ -6,7 +6,7 @@ Built with plain HTML + CSS, no framework, no build step. Designed with [Claude 
 
 ## Usage
 
-Feel free to use this as a template. If you do, a link back to [krahets.com](https://krahets.com) is appreciated.
+Feel free to use this as a template. A link back to [krahets.com](https://krahets.com) would be appreciated.
 
 ## License
 
