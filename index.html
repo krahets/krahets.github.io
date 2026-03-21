@@ -368,6 +368,19 @@
       }
     }
 
+    /* ─── Awards ─────────────────────────────────────────────── */
+    .award {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      padding: 0.5rem 0;
+    }
+    .award__left { flex: 1; min-width: 0; }
+    .award__name { font-size: var(--text-base); color: var(--text-primary); font-weight: 700; margin: 0 0 0.15rem; }
+    .award__desc { font-size: var(--text-sm); color: var(--text-secondary); margin: 0; }
+    .award__year { font-size: var(--text-sm); color: var(--text-secondary); white-space: nowrap; flex-shrink: 0; }
+
     /* ─── Footer ─────────────────────────────────────────────── */
     .site-footer {
       margin-top: 10rem;
@@ -474,7 +487,7 @@
             I am a third-year PhD student in Computer Science at Zhejiang University,
             advised by Prof. <a href="https://xzhou.me/">Xiaowei Zhou</a>.
             My research focuses on spatial intelligence, with a particular interest in lifting video models with 3D/4D generation capabilities for the dynamic world.
-            I am also passionate about open-source education (see <a href="https://github.com/krahets/hello-algo">Hello Algo</a>).
+            I am also passionate about open-source education and have built <a href="https://github.com/krahets/hello-algo">Hello Algo</a>.
           </p>
           <nav class="contact" aria-label="Contact links">
             <a class="contact__link" href="mailto:krahetx@gmail.com" aria-label="Email">
@@ -507,7 +520,7 @@
             <span class="pub__venue">ICCV 2025</span>
             <p class="pub__title">
               <a href="https://diffuman4d.github.io/">
-                Diffuman4D: 4D Consistent Human View Synthesis from Sparse-View Videos
+                Diffuman4D: 4D Consistent Human View Synthesis from Sparse-View Videos with Spatio-Temporal Diffusion Models
               </a>
             </p>
             <p class="pub__authors">
@@ -620,7 +633,7 @@
         <div class="exp-card">
           <img class="exp-card__icon" src="assets/exp_robbyant.jpg" alt="Robbyant" />
           <div class="exp-card__body">
-            <p class="exp-card__role">Research Intern · <a href="https://www.robbyant.com/" target="_blank" rel="noopener noreferrer">Robbyant</a></p>
+            <p class="exp-card__role">Research Intern, <a href="https://www.robbyant.com/" target="_blank" rel="noopener noreferrer">Robbyant</a></p>
             <p class="exp-card__mentor">Mentored by Prof. <a href="https://justimyhxu.github.io/" target="_blank" rel="noopener noreferrer">Yinghao Xu</a></p>
             <p class="exp-card__period">Aug. 2025 – Present</p>
           </div>
@@ -629,12 +642,37 @@
         <div class="exp-card">
           <img class="exp-card__icon" src="assets/exp_antgroup.png" alt="Ant Research" />
           <div class="exp-card__body">
-            <p class="exp-card__role">Research Intern · <a href="https://www.antgroup.com/en/technology/" target="_blank" rel="noopener noreferrer">Ant Research</a></p>
+            <p class="exp-card__role">Research Intern, <a href="https://www.antgroup.com/en/technology/" target="_blank" rel="noopener noreferrer">Ant Research</a></p>
             <p class="exp-card__mentor">Mentored by Prof. <a href="https://xuanwangvc.github.io/" target="_blank" rel="noopener noreferrer">Xuan Wang</a></p>
             <p class="exp-card__period">Sep. 2024 – Jul. 2025</p>
           </div>
         </div>
 
+      </div>
+    </section>
+
+    <section aria-labelledby="awards-title">
+      <h2 class="section-title" id="awards-title">Awards</h2>
+      <div class="award">
+        <div class="award__left">
+          <p class="award__name">Overall Champion, VEX Robotics World Championship</p>
+          <p class="award__desc">1st of 350 teams.</p>
+        </div>
+        <span class="award__year">2017</span>
+      </div>
+      <div class="award">
+        <div class="award__left">
+          <p class="award__name">Best Graduation Thesis, Xi'an Jiaotong University</p>
+          <p class="award__desc">Top 1% of graduates.</p>
+        </div>
+        <span class="award__year">2017</span>
+      </div>
+      <div class="award">
+        <div class="award__left">
+          <p class="award__name">First Prize, Global AI Innovation Competition</p>
+          <p class="award__desc">3rd of 40 teams.</p>
+        </div>
+        <span class="award__year">2023</span>
       </div>
     </section>
 
