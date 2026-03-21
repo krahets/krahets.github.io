@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+
+# Reference material (private)
+reference/
+
+# Node (used for local tooling only)
+node_modules/
+
+# Local dev tooling
+.agents/
+.claude/
+
+# Misc
+*.local
+.env
