@@ -30,10 +30,10 @@
       --text-primary:   oklch(17%  0    0);    /* neutral near-black */
       --text-secondary: oklch(44%  0    0);    /* neutral medium gray */
       --text-muted:     oklch(62%  0    0);    /* neutral light gray */
-      --accent:         oklch(50%  0.19 255);  /* blue — links */
-      --accent-bg:      oklch(95.5% 0.022 255); /* link pill bg on hover */
-      --accent-border:  oklch(80%  0.06 255);  /* link pill border */
-      --venue:          oklch(42%  0.18 255);  /* dark blue — conference badge */
+      --accent:         #06c;               /* Apple blue — links */
+      --accent-bg:      #e8f1ff;            /* light blue hover fill */
+      --accent-border:  #b3d4f5;            /* light blue border */
+      --venue:          #0071e3;            /* Apple filled blue — badge */
       --border:         oklch(88%  0    0);    /* neutral divider */
 
       /* Type scale — modular 1.25 ratio */
@@ -216,8 +216,7 @@
     }
 
     .pub__authors strong {
-      color: var(--text-primary);
-      font-weight: 400;
+      font-weight: 700;
     }
 
     .pub__authors a {
@@ -397,10 +396,10 @@
       --text-primary:   oklch(91%  0     0);    /* clean near-white, no tint */
       --text-secondary: oklch(64%  0.004 255);  /* slightly cool gray */
       --text-muted:     oklch(47%  0.004 255);  /* dimmer gray */
-      --accent:         oklch(66%  0.18  255);  /* blue — brighter on dark bg */
-      --accent-bg:      oklch(22%  0.055 255);  /* dark blue hover fill */
-      --accent-border:  oklch(36%  0.09  255);  /* mid blue border */
-      --venue:          oklch(58%  0.15  255);  /* blue — conference badge */
+      --accent:         #2997ff;            /* Apple dark blue — brighter on dark bg */
+      --accent-bg:      #0a1e3d;            /* dark blue hover fill */
+      --accent-border:  #1a4a8a;            /* mid blue border */
+      --venue:          #2997ff;            /* Apple dark blue — badge */
       --border:         oklch(36%  0     0);    /* neutral separator */
     }
 
@@ -526,7 +525,7 @@
               <a class="pill" href="https://diffuman4d.github.io/">Project</a>
               <a class="pill" href="https://arxiv.org/abs/2507.13344">Paper</a>
               <a class="badge-link" href="https://github.com/zju3dv/Diffuman4D" target="_blank" rel="noopener noreferrer">
-                <img src="https://img.shields.io/github/stars/zju3dv/Diffuman4D?style=flat&label=Stars&color=4f8ef7&labelColor=eef2ff" alt="GitHub stars" class="gh-badge" style="vertical-align:middle;" />
+                <img src="https://img.shields.io/github/stars/zju3dv/Diffuman4D?style=flat&label=Stars&color=0071e3&labelColor=eaf4fe" alt="GitHub stars" class="gh-badge" style="vertical-align:middle;" />
               </a>
             </div>
           </div>
@@ -558,7 +557,7 @@
               <a class="pill" href="https://zju3dv.github.io/envgs/">Project</a>
               <a class="pill" href="https://arxiv.org/abs/2412.15215">Paper</a>
               <a class="badge-link" href="https://github.com/zju3dv/EnvGS" target="_blank" rel="noopener noreferrer">
-                <img src="https://img.shields.io/github/stars/zju3dv/EnvGS?style=flat&label=Stars&color=4f8ef7&labelColor=eef2ff" alt="GitHub stars" class="gh-badge" style="vertical-align:middle;" />
+                <img src="https://img.shields.io/github/stars/zju3dv/EnvGS?style=flat&label=Stars&color=0071e3&labelColor=eaf4fe" alt="GitHub stars" class="gh-badge" style="vertical-align:middle;" />
               </a>
             </div>
           </div>
@@ -584,7 +583,7 @@
             <div class="pill-links">
               <a class="pill" href="https://github.com/krahets/hello-algo">GitHub</a>
               <a class="badge-link" href="https://github.com/krahets/hello-algo" target="_blank" rel="noopener noreferrer">
-                <img src="https://img.shields.io/github/stars/krahets/hello-algo?style=flat&label=Stars&color=4f8ef7&labelColor=eef2ff" alt="GitHub stars" class="gh-badge" style="vertical-align:middle;" />
+                <img src="https://img.shields.io/github/stars/krahets/hello-algo?style=flat&label=Stars&color=0071e3&labelColor=eaf4fe" alt="GitHub stars" class="gh-badge" style="vertical-align:middle;" />
               </a>
             </div>
           </div>
@@ -604,7 +603,7 @@
             <div class="pill-links">
               <a class="pill" href="https://leetcode.cn/leetbook/detail/illustration-of-algorithm/">LeetBook</a>
               <a class="badge-link" href="https://github.com/krahets/LeetCode-Book" target="_blank" rel="noopener noreferrer">
-                <img src="https://img.shields.io/github/stars/krahets/LeetCode-Book?style=flat&label=Stars&color=4f8ef7&labelColor=eef2ff" alt="GitHub stars" class="gh-badge" style="vertical-align:middle;" />
+                <img src="https://img.shields.io/github/stars/krahets/LeetCode-Book?style=flat&label=Stars&color=0071e3&labelColor=eaf4fe" alt="GitHub stars" class="gh-badge" style="vertical-align:middle;" />
               </a>
             </div>
           </div>
@@ -652,8 +651,8 @@
     };
 
     var BADGE = {
-      light: 'style=flat&label=Stars&color=3b74d1&labelColor=dde8f8',
-      dark:  'style=flat&label=Stars&color=6aa3f5&labelColor=1c2d44'
+      light: 'style=flat&label=Stars&color=0071e3&labelColor=eaf4fe',
+      dark:  'style=flat&label=Stars&color=0071e3&labelColor=002d5b'
     };
 
     var btn = document.getElementById('theme-toggle');
