@@ -11,8 +11,8 @@ Built with plain HTML + CSS, no framework, no build step. Designed with [Claude 
 
 Ask [Claude Code](https://claude.ai/claude-code) to:
 
-1. Update `CLAUDE.md` with your name, email, GitHub, and research info.
-2. Replace assets in `assets/` (profile photos, publication videos, thumbnails).
+1. Update `CLAUDE.md` with your personal info (name, email, GitHub, social links, research interests, etc.).
+2. Replace assets in `assets/` (profile photos, publication videos, thumbnails, etc.).
 3. Edit your content in `index.html`.
 
 To redesign the page, install the [impeccable](https://github.com/pbakaus/impeccable) skill pack (see `skills-lock.json`) for design skills like `/typeset` and `/polish`.
