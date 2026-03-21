@@ -9,7 +9,7 @@ Built with plain HTML + CSS, no framework, no build step. Designed with [Claude 
 
 ## Usage
 
-Ask [Claude Code](https://claude.ai/claude-code) to:
+Ask Claude Code to:
 
 1. Update `CLAUDE.md` with your personal info (name, email, GitHub, social links, research interests, etc.).
 2. Replace assets in `assets/` (profile photos, publication videos, thumbnails, etc.).
