@@ -29,7 +29,7 @@
       --bg:             oklch(98.5% 0    0);    /* neutral white */
       --text-primary:   oklch(17%  0    0);    /* neutral near-black */
       --text-secondary: oklch(42%  0    0);    /* neutral medium gray */
-      --text-muted:     oklch(62%  0    0);    /* neutral light gray */
+      --text-muted:     oklch(52%  0    0);    /* neutral light gray */
       --accent:         #06c;               /* Apple blue — links */
       --accent-bg:      #e8f1ff;            /* light blue hover fill */
       --accent-border:  #b3d4f5;            /* light blue border */
@@ -37,14 +37,13 @@
       --border:         oklch(88%  0    0);    /* neutral divider */
 
       /* Type scale — modular 1.25 ratio */
-      --text-xs:    0.75rem;   /* 12px */
-      --text-sm:    0.8125rem; /* 13px */
-      --text-prose: 0.875rem;  /* 14px */
-      --text-base:  1rem;      /* 16px — body minimum */
+      --text-xs:    0.75rem;    /* 12px */
+      --text-sm:    0.875rem;   /* 14px */
+      --text-base:  1rem;       /* 16px — body minimum */
       --text-md:    1.125rem;  /* 18px */
-      --text-lg:    1.375rem;  /* 22px */
+      --text-lg:    1.25rem;   /* 20px */
       --text-xl:    clamp(1.5rem, 4vw, 1.875rem);
-      --text-name:  clamp(1.75rem, 5vw, 2.375rem);
+      --text-name:  clamp(1.5rem, 4vw, 2rem);
 
       /* Families */
       --serif: 'Lato', 'Helvetica Neue', Arial, sans-serif;
@@ -107,6 +106,9 @@
       letter-spacing: -0.01em;
       line-height: 1.15;
       margin-bottom: 0.3em;
+      display: flex;
+      align-items: baseline;
+      gap: 0.5em;
     }
 
     .about__role {
@@ -156,7 +158,7 @@
 
     .section-title {
       font-family: var(--serif);
-      font-size: var(--text-md);
+      font-size: var(--text-lg);
       font-weight: 400;
       letter-spacing: 0.02em;
       color: var(--text-primary);
@@ -185,13 +187,13 @@
 
     .pub__body { flex: 1; }
 
-    .pub__venue {
-      display: inline-block;
-      font-size: var(--text-prose);
+    .badge {
+      display: block;
+      width: fit-content;
+      font-size: var(--text-sm);
       font-weight: 400;
-      letter-spacing: 0.06em;
-      color: var(--text-secondary);
-      margin-bottom: 0.3rem;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
     }
 
     .pub__title {
@@ -210,7 +212,7 @@
     .pub__title a:hover { color: var(--accent); }
 
     .pub__authors {
-      font-size: var(--text-prose);
+      font-size: var(--text-sm);
       color: var(--text-secondary);
       margin-bottom: 0.6rem;
     }
@@ -285,16 +287,8 @@
 
     .book__title a:hover { color: var(--accent); }
 
-    .book__badge {
-      display: block;
-      font-size: var(--text-xs);
-      color: var(--text-muted);
-      margin-bottom: 0.5rem;
-      letter-spacing: 0.01em;
-    }
-
     .book__desc {
-      font-size: var(--text-prose);
+      font-size: var(--text-sm);
       color: var(--text-secondary);
       max-width: 54ch;
       margin-bottom: 0.6rem;
@@ -343,7 +337,7 @@
     .exp-card__role a:hover { text-decoration: underline; }
 
     .exp-card__mentor {
-      font-size: var(--text-prose);
+      font-size: var(--text-sm);
       color: var(--text-secondary);
       margin: 0;
     }
@@ -355,7 +349,7 @@
 
     .exp-card__mentor a:hover { text-decoration: underline; }
     .exp-card__period {
-      font-size: var(--text-prose);
+      font-size: var(--text-sm);
       color: var(--text-secondary);
       margin: 0;
     }
@@ -378,8 +372,8 @@
     }
     .award__left { flex: 1; min-width: 0; }
     .award__name { font-size: var(--text-base); color: var(--text-primary); font-weight: 400; margin: 0 0 0.15rem; }
-    .award__desc { font-size: var(--text-prose); color: var(--text-secondary); margin: 0; }
-    .award__year { font-size: var(--text-prose); color: var(--text-secondary); white-space: nowrap; flex-shrink: 0; }
+    .award__desc { font-size: var(--text-sm); color: var(--text-secondary); margin: 0; }
+    .award__year { font-size: var(--text-sm); color: var(--text-secondary); white-space: nowrap; flex-shrink: 0; }
 
     /* ─── Footer ─────────────────────────────────────────────── */
     .site-footer {
@@ -387,7 +381,7 @@
       padding-top: 0.75rem;
       padding-bottom: 1rem;
       border-top: 1px solid var(--border);
-      font-size: 0.8125rem;
+      font-size: var(--text-sm);
       color: var(--text-muted);
       text-align: center;
     }
@@ -406,9 +400,9 @@
 
     [data-theme="dark"] {
       --bg:             #1e1e1e;
-      --text-primary:   oklch(91%  0     0);    /* clean near-white, no tint */
-      --text-secondary: oklch(70%  0.004 255);  /* slightly cool gray */
-      --text-muted:     oklch(47%  0.004 255);  /* dimmer gray */
+      --text-primary:   oklch(96%  0     0);    /* near-white */
+      --text-secondary: oklch(80%  0     0);    /* medium gray */
+      --text-muted:     oklch(68%  0     0);    /* dimmer gray */
       --accent:         #2997ff;            /* Apple dark blue — brighter on dark bg */
       --accent-bg:      #0a1e3d;            /* dark blue hover fill */
       --accent-border:  #1a4a8a;            /* mid blue border */
@@ -456,6 +450,7 @@
       }
 
       .about__bio { max-width: none; }
+      .about__name { justify-content: center; }
       .contact { justify-content: center; }
 
       .pub, .book { flex-direction: column; }
@@ -480,8 +475,8 @@
         <img class="about__photo" src="assets/profile_light.jpg" alt="Yudong Jin" />
         <div class="about__content">
           <h1 class="about__name" id="about-name">
-            Yudong Jin
-            <span style="font-family: 'LXGW WenKai TC', serif; font-weight: 400; font-size: 0.85em; color: var(--text-primary); letter-spacing: 0.05em; vertical-align: middle; margin-left: 0.5em;">靳宇栋</span>
+            <span>Yudong Jin</span>
+            <span style="font-family: 'LXGW WenKai TC', serif; font-weight: 400; font-size: 1em; color: var(--text-primary); letter-spacing: 0.05em;">靳宇栋</span>
           </h1>
           <p class="about__bio">
             I am a third-year PhD student in Computer Science at Zhejiang University,
@@ -517,7 +512,7 @@
             <source src="assets/pub_diffuman4d.mp4" type="video/mp4" />
           </video>
           <div class="pub__body">
-            <span class="pub__venue">ICCV 2025</span>
+            <span class="badge">ICCV 2025</span>
             <p class="pub__title">
               <a href="https://diffuman4d.github.io/">
                 Diffuman4D: 4D Consistent Human View Synthesis from Sparse-View Videos with Spatio-Temporal Diffusion Models
@@ -549,7 +544,7 @@
             <source src="assets/pub_envgs.mp4" type="video/mp4" />
           </video>
           <div class="pub__body">
-            <span class="pub__venue">CVPR 2025</span>
+            <span class="badge">CVPR 2025</span>
             <p class="pub__title">
               <a href="https://zju3dv.github.io/envgs/">
                 EnvGS: Modeling View-Dependent Appearance with Environment Gaussian
@@ -587,11 +582,12 @@
         <article class="book">
           <img class="book__thumb" src="assets/book_hello_algo.jpg" alt="Hello Algo" />
           <div class="book__body">
+            <span class="badge">#1 Trending GitHub Repo in 2023</span>
             <p class="book__title">
               <a href="https://www.hello-algo.com/">Hello Algo</a>
             </p>
             <p class="book__desc">
-              Trusted by millions of beginners to learn data structures and algorithms from scratch. The #1 trending repository on GitHub in 2023.
+              Embraced by millions of beginners to learn data structures and algorithms from scratch.
             </p>
             <div class="pill-links">
               <a class="pill" href="https://github.com/krahets/hello-algo">GitHub</a>
@@ -605,6 +601,7 @@
         <article class="book">
           <img class="book__thumb" src="assets/book_illustration.jpg" alt="Illustration of DSA" />
           <div class="book__body">
+            <span class="badge">Most-Read LeetBook</span>
             <p class="book__title">
               <a href="https://leetcode.cn/leetbook/detail/illustration-of-algorithm/">
                 Illustration of DSA
