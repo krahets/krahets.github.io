@@ -201,15 +201,8 @@
       font-weight: 400;
       line-height: 1.45;
       margin-bottom: 0.3rem;
-    }
-
-    .pub__title a {
       color: var(--text-primary);
-      text-decoration: none;
-      transition: color 0.15s ease-out;
     }
-
-    .pub__title a:hover { color: var(--accent); }
 
     .pub__authors {
       font-size: var(--text-sm);
@@ -227,6 +220,9 @@
     }
 
     .pub__authors a:hover { text-decoration: underline; }
+
+    .award__desc a { color: inherit; text-decoration: none; }
+    .award__desc a:hover { text-decoration: underline; }
 
     .pill-links { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 
@@ -277,15 +273,8 @@
       font-size: var(--text-base);
       font-weight: 400;
       margin-bottom: 0.25rem;
-    }
-
-    .book__title a {
       color: var(--text-primary);
-      text-decoration: none;
-      transition: color 0.15s ease-out;
     }
-
-    .book__title a:hover { color: var(--accent); }
 
     .book__desc {
       font-size: var(--text-sm);
@@ -383,7 +372,9 @@
       border-top: 1px solid var(--border);
       font-size: var(--text-sm);
       color: var(--text-muted);
-      text-align: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     .site-footer p {
@@ -391,12 +382,12 @@
     }
 
     .site-footer a {
-      color: var(--text-muted);
-      text-decoration: underline;
+      color: var(--accent);
+      text-decoration: none;
       text-underline-offset: 2px;
     }
 
-    .site-footer a:hover { color: var(--accent); }
+    .site-footer a:hover { text-decoration: underline; }
 
     [data-theme="dark"] {
       --bg:             #1e1e1e;
@@ -517,9 +508,7 @@
           <div class="pub__body">
             <span class="badge">ICCV 2025</span>
             <p class="pub__title">
-              <a href="https://diffuman4d.github.io/">
                 Diffuman4D: 4D Consistent Human View Synthesis from Sparse-View Videos with Spatio-Temporal Diffusion Models
-              </a>
             </p>
             <p class="pub__authors">
               <strong>Yudong Jin</strong>,
@@ -549,9 +538,7 @@
           <div class="pub__body">
             <span class="badge">CVPR 2025</span>
             <p class="pub__title">
-              <a href="https://zju3dv.github.io/envgs/">
                 EnvGS: Modeling View-Dependent Appearance with Environment Gaussian
-              </a>
             </p>
             <p class="pub__authors">
               <a href="https://github.com/xbillowy" target="_blank" rel="noopener noreferrer">Tao Xie</a>,
@@ -586,9 +573,7 @@
           <img class="book__thumb" src="assets/book_hello_algo.jpg" alt="Hello Algo" />
           <div class="book__body">
             <span class="badge">#1 Trending GitHub Repo in 2023</span>
-            <p class="book__title">
-              <a href="https://www.hello-algo.com/">Hello Algo</a>
-            </p>
+            <p class="book__title">Hello Algo</p>
             <p class="book__desc">
               Embraced by millions of beginners to learn data structures and algorithms from scratch.
             </p>
@@ -605,11 +590,7 @@
           <img class="book__thumb" src="assets/book_illustration.jpg" alt="Illustration of DSA" />
           <div class="book__body">
             <span class="badge">Most-Read LeetBook</span>
-            <p class="book__title">
-              <a href="https://leetcode.cn/leetbook/detail/illustration-of-algorithm/">
-                Illustration of DSA
-              </a>
-            </p>
+            <p class="book__title">Illustration of DSA</p>
             <p class="book__desc">
               Helps 300k+ subscribers practice coding problems.
             </p>
@@ -656,27 +637,28 @@
       <div class="award">
         <div class="award__left">
           <p class="award__name">Overall Champion, VEX Robotics World Championship</p>
-          <p class="award__desc">1st of 350 teams.</p>
+          <p class="award__desc"><a href="https://www.robotevents.com/robot-competitions/college-competition/RE-VEXU-17-4886.html#awards" target="_blank" rel="noopener noreferrer">1st of 350 teams</a></p>
         </div>
         <span class="award__year">2017</span>
       </div>
       <div class="award">
         <div class="award__left">
           <p class="award__name">Best Graduation Thesis, Xi'an Jiaotong University</p>
-          <p class="award__desc">Top 1% of graduates.</p>
+          <p class="award__desc">Top 1% of graduates</p>
         </div>
         <span class="award__year">2017</span>
       </div>
       <div class="award">
         <div class="award__left">
           <p class="award__name">First Prize, Global AI Innovation Competition</p>
-          <p class="award__desc">3rd of 40 teams.</p>
+          <p class="award__desc"><a href="https://www.gigavision.cn/track/track/?nav=Sparse%20rendering" target="_blank" rel="noopener noreferrer">3rd of 40 teams</a></p>
         </div>
         <span class="award__year">2023</span>
       </div>
     </section>
 
     <footer class="site-footer">
+      <p>© 2025 Yudong Jin (@krahets)</p>
       <p>Feel free to borrow this website's <a href="https://github.com/krahets/krahets.github.io" target="_blank" rel="noopener noreferrer">source code</a>.</p>
     </footer>
 
