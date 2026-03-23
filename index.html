@@ -105,7 +105,7 @@
       font-weight: 400;
       letter-spacing: -0.01em;
       line-height: 1.15;
-      margin-bottom: 0.3em;
+      margin-bottom: 0.6em;
       display: flex;
       align-items: baseline;
       gap: 0.5em;
@@ -121,7 +121,7 @@
       font-size: var(--text-base);
       color: var(--text-primary);
       max-width: 58ch;
-      margin-bottom: 1.25em;
+      margin-bottom: 0.6em;
     }
 
     /* ─── Contact links ──────────────────────────────────────── */
@@ -366,7 +366,7 @@
 
     /* ─── Footer ─────────────────────────────────────────────── */
     .site-footer {
-      margin-top: 10rem;
+      margin-top: 6rem;
       padding-top: 0.75rem;
       padding-bottom: 1rem;
       border-top: 1px solid var(--border);
@@ -437,11 +437,13 @@
       .about {
         flex-direction: column;
         align-items: center;
-        text-align: center;
+        gap: 1.0em;
       }
 
-      .about__bio { max-width: none; }
+      .about__content { width: 100%; }
       .about__name { justify-content: center; }
+
+      .about__bio { max-width: none; }
       .contact { justify-content: center; }
 
       .pub, .book { flex-direction: column; }
