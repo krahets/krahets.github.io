@@ -21,10 +21,9 @@ assets/
 **Colors** — OKLCH perceptually uniform color tokens, defined on `:root` and `[data-theme="dark"]`:
 - `--bg`, `--text-primary`, `--text-secondary`, `--text-muted` — neutrals
 - `--accent` — blue links
-- `--venue` — conference badge color
 - `--border` — dividers
 
-**Type scale** — Lato (300/400/700 only). Available sizes: `--text-xs` (12px), `--text-sm` (13px), `--text-base` (16px), `--text-md` (18px). No 500/600 weights — use 400 or 700.
+**Type scale** — Lato (300/400/700 only). Available sizes: `--text-xs` (12px), `--text-sm` (14px), `--text-base` (16px), `--text-md` (18px), `--text-lg` (20px). No 500/600 weights — use 400 or 700.
 
 **Chinese name** — 靳宇栋 uses `LXGW WenKai TC` (Google Fonts, 400 only).
 
@@ -42,14 +41,19 @@ assets/
 | Section | Key classes |
 |---|---|
 | About | `.about`, `.about__photo`, `.about__bio` |
-| Publications | `.pub`, `.pub__thumb` (video, 220px, 16:9), `.pub__venue`, `.pub__authors`, `.pub__title` |
-| Open-Source | `.book`, `.book__thumb` (img, 220px, 16:9), `.book__title`, `.book__desc` |
+| Publications | `.pub`, `.pub__thumb` (video, 220px, 16:9), `.badge`, `.pub__authors`, `.pub__title` |
+| Open-Source | `.book`, `.book__thumb` (img, 220px, 16:9), `.badge`, `.book__title`, `.book__desc` |
 | Experience | `.exp-grid` (2-col), `.exp-card`, `.exp-card__icon` (44×44px), `.exp-card__role/mentor/period` |
-| Footer | `.site-footer` (inside `.container`) |
+| Awards | `.award`, `.award__left`, `.award__name`, `.award__desc`, `.award__year` |
+| Footer | `.site-footer` (flex, copyright left / source code right) |
+
+## Badges
+
+`.badge` — unified class for all section badges (CVPR 2025, ICCV 2025, #1 Trending GitHub Repo, Most-Read LeetBook). Displayed above the title. `--text-sm`, `--text-muted` color.
 
 ## Asset Conventions
 
-- Publication thumbnails: `pub_<name>.mp4` — 852×480 (480p), H264 CRF23, no audio
+- Publication thumbnails: `pub_<name>.mp4` — 852×480 (480p), H264 CRF26, no audio, `-preset slow -movflags faststart`
 - Open-Source thumbnails: `book_<name>.jpg` — 852×480 (480p), center-cropped 16:9
 - Experience icons: `exp_<company>.(jpg|png)` — displayed at 44×44px, `border-radius: 8px`
 - Profile photos: `profile_light.jpg` / `profile_dark.jpg` — circular via CSS `border-radius: 50%`
@@ -57,12 +61,13 @@ assets/
 ## GitHub Star Badges
 
 shields.io badges with theme-aware URL params. Updated on theme toggle via JS regex on `.gh-badge` `src`:
-- Light: `style=flat&label=Stars&color=3b74d1&labelColor=dde8f8`
+- Light: `style=flat&label=Stars&color=0071e3&labelColor=eaf4fe`
 - Dark: `style=flat&label=Stars&color=6aa3f5&labelColor=1c2d44`
 
 ## Content
 
-- **Owner**: Yudong Jin (靳宇栋), PhD student at Zhejiang University, advised by Prof. Xiaowei Zhou
+- **Owner**: Yudong Jin (靳宇栋), PhD student at Zhejiang University, advised by Prof. Xiaowei Zhou, mentored by Prof. Sida Peng
+- **Education**: M.S. Shanghai Jiao Tong University, B.S. Xi'an Jiaotong University
 - **Email**: krahetx@gmail.com
 - **GitHub**: krahets | **X**: krahets
-- **Research**: Spatial intelligence, 3D/4D generation, lifting video models
+- **Research**: Spatial intelligence, lifting video models into 3D space to perceive the physical world
