@@ -196,6 +196,12 @@
       margin-bottom: 0.25rem;
     }
 
+    .badge__accent {
+      color: oklch(42% 0.07 12);
+      font-weight: 500;
+      letter-spacing: 0.01em;
+    }
+
     .pub__title {
       font-size: var(--text-base);
       font-weight: 400;
@@ -407,6 +413,10 @@
       filter: brightness(0.82);
     }
 
+    [data-theme="dark"] .badge__accent {
+      color: oklch(82% 0.035 12);
+    }
+
     /* ─── Theme toggle ───────────────────────────────────────── */
     .theme-toggle {
       margin-left: auto;
@@ -502,6 +512,38 @@
     <section aria-labelledby="pub-title">
       <h2 class="section-title" id="pub-title">Publications</h2>
       <div class="pub-list">
+
+        <article class="pub">
+          <video class="pub__thumb" autoplay loop muted playsinline preload="metadata">
+            <source src="assets/pub_scal3r.mp4" type="video/mp4" />
+          </video>
+          <div class="pub__body">
+            <span class="badge">CVPR 2026 (<span class="badge__accent">Highlight</span>)</span>
+            <p class="pub__title">
+                Scal3R: Scalable Test-Time Training for Large-Scale 3D Reconstruction
+            </p>
+            <p class="pub__authors">
+              <a href="https://github.com/xbillowy" target="_blank" rel="noopener noreferrer">Tao Xie</a>,
+              <a href="https://github.com/PeiPei233/" target="_blank" rel="noopener noreferrer">Peishan Yang</a>,
+              <strong>Yudong Jin</strong>,
+              Yingfeng Cai,
+              <a href="https://yvanyin.xyz/" target="_blank" rel="noopener noreferrer">Wei Yin</a>,
+              Weiqiang Ren,
+              Qian Zhang,
+              Wei Hua,
+              <a href="https://pengsida.net/" target="_blank" rel="noopener noreferrer">Sida Peng</a>,
+              <a href="https://github.com/xy-guo" target="_blank" rel="noopener noreferrer">Xiaoyang Guo</a>,
+              <a href="https://xzhou.me/" target="_blank" rel="noopener noreferrer">Xiaowei Zhou</a>
+            </p>
+            <div class="pill-links">
+              <a class="pill" href="https://zju3dv.github.io/scal3r/">Project</a>
+              <a class="pill" href="https://arxiv.org/abs/2604.08542">Paper</a>
+              <a class="badge-link" href="https://github.com/zju3dv/Scal3R" target="_blank" rel="noopener noreferrer">
+                <img src="https://img.shields.io/github/stars/zju3dv/Scal3R?style=flat&label=Stars&color=0071e3&labelColor=eaf4fe" alt="GitHub stars" class="gh-badge" style="vertical-align:middle;" />
+              </a>
+            </div>
+          </div>
+        </article>
 
         <article class="pub">
           <video class="pub__thumb" autoplay loop muted playsinline>

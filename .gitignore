@@ -10,6 +10,7 @@ node_modules/
 # Local dev tooling
 .agents/
 .claude/
+.omx/
 
 # Misc
 *.local

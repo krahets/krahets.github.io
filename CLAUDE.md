@@ -9,6 +9,7 @@ index.html          # Entire website — HTML, CSS, and JS in one file
 assets/
   profile_light.jpg / profile_dark.jpg   # Avatar (theme-aware)
   favicon.png                            # Circular favicon (128×128)
+  pub_scal3r.mp4                         # Publication preview video
   pub_diffuman4d.mp4                     # Publication preview video
   pub_envgs.mp4                          # Publication preview video
   book_hello_algo.jpg                    # Open-Source section thumbnail
@@ -19,6 +20,7 @@ assets/
 ## Design System
 
 **Colors** — OKLCH perceptually uniform color tokens, defined on `:root` and `[data-theme="dark"]`:
+
 - `--bg`, `--text-primary`, `--text-secondary`, `--text-muted` — neutrals
 - `--accent` — blue links
 - `--border` — dividers
@@ -38,22 +40,24 @@ assets/
 
 ## Sections & Classes
 
-| Section | Key classes |
-|---|---|
-| About | `.about`, `.about__photo`, `.about__bio` |
-| Publications | `.pub`, `.pub__thumb` (video, 220px, 16:9), `.badge`, `.pub__authors`, `.pub__title` |
-| Open-Source | `.book`, `.book__thumb` (img, 220px, 16:9), `.badge`, `.book__title`, `.book__desc` |
-| Experience | `.exp-grid` (2-col), `.exp-card`, `.exp-card__icon` (44×44px), `.exp-card__role/mentor/period` |
-| Awards | `.award`, `.award__left`, `.award__name`, `.award__desc`, `.award__year` |
-| Footer | `.site-footer` (flex, copyright left / source code right) |
+| Section      | Key classes                                                                                            |
+| ------------ | ------------------------------------------------------------------------------------------------------ |
+| About        | `.about`, `.about__photo`, `.about__bio`                                                               |
+| Publications | `.pub`, `.pub__thumb` (video, 220px, 16:9), `.badge`, `.badge__accent`, `.pub__authors`, `.pub__title` |
+| Open-Source  | `.book`, `.book__thumb` (img, 220px, 16:9), `.badge`, `.book__title`, `.book__desc`                    |
+| Experience   | `.exp-grid` (2-col), `.exp-card`, `.exp-card__icon` (44×44px), `.exp-card__role/mentor/period`         |
+| Awards       | `.award`, `.award__left`, `.award__name`, `.award__desc`, `.award__year`                               |
+| Footer       | `.site-footer` (flex, copyright left / source code right)                                              |
 
 ## Badges
 
-`.badge` — unified class for all section badges (CVPR 2025, ICCV 2025, #1 Trending GitHub Repo, Most-Read LeetBook). Displayed above the title. `--text-sm`, `--text-muted` color.
+`.badge` — unified class for section badges, including venue strings such as `CVPR 2026 (Highlight)`, `ICCV 2025`, and non-paper badges such as `#1 Trending GitHub Repo in 2023`. Displayed above the title.
+
+`.badge__accent` — inline text accent used only for emphasized badge fragments such as `Highlight`. Pure text styling only; no pill background, border, or extra left margin.
 
 ## Asset Conventions
 
-- Publication thumbnails: `pub_<name>.mp4` — 852×480 (480p), H264 CRF26, no audio, `-preset slow -movflags faststart`
+- Publication thumbnails: `pub_<name>.mp4` — 852×480 (480p), H264 CRF23, no audio, `-preset medium -movflags faststart`
 - Open-Source thumbnails: `book_<name>.jpg` — 852×480 (480p), center-cropped 16:9
 - Experience icons: `exp_<company>.(jpg|png)` — displayed at 44×44px, `border-radius: 8px`
 - Profile photos: `profile_light.jpg` / `profile_dark.jpg` — circular via CSS `border-radius: 50%`
@@ -61,6 +65,7 @@ assets/
 ## GitHub Star Badges
 
 shields.io badges with theme-aware URL params. Updated on theme toggle via JS regex on `.gh-badge` `src`:
+
 - Light: `style=flat&label=Stars&color=0071e3&labelColor=eaf4fe`
 - Dark: `style=flat&label=Stars&color=6aa3f5&labelColor=1c2d44`
 
@@ -71,3 +76,7 @@ shields.io badges with theme-aware URL params. Updated on theme toggle via JS re
 - **Email**: krahetx@gmail.com
 - **GitHub**: krahets | **X**: krahets
 - **Research**: Spatial intelligence, lifting video models into 3D space to perceive the physical world
+- **Publications currently shown**:
+  - `Scal3R` — CVPR 2026 (`Highlight` accented inline), local preview video `assets/pub_scal3r.mp4`
+  - `Diffuman4D` — ICCV 2025, local preview video `assets/pub_diffuman4d.mp4`
+  - `EnvGS` — CVPR 2025, local preview video `assets/pub_envgs.mp4`
