@@ -35,6 +35,7 @@
       --accent-border:  #b3d4f5;            /* light blue border */
       --venue:          #0071e3;            /* Apple filled blue — badge */
       --border:         oklch(88%  0    0);    /* neutral divider */
+      --media-placeholder: oklch(97% 0 0);    /* light gray while media loads */
 
       /* Type scale — modular 1.25 ratio */
       --text-xs:    0.75rem;    /* 12px */
@@ -182,7 +183,7 @@
       aspect-ratio: 16 / 9;
       border-radius: var(--radius);
       object-fit: cover;
-      background-color: oklch(92% 0.012 78);
+      background-color: var(--media-placeholder);
     }
 
     .pub__body { flex: 1; }
@@ -405,6 +406,7 @@
       --accent-border:  #1a4a8a;            /* mid blue border */
       --venue:          #2997ff;            /* Apple dark blue — badge */
       --border:         oklch(36%  0     0);    /* neutral separator */
+      --media-placeholder: oklch(24% 0 0);    /* dark gray while media loads */
     }
 
     [data-theme="dark"] .pub__thumb,
