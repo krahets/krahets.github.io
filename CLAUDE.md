@@ -1,6 +1,6 @@
 # krahets.com — Personal Academic Website
 
-Single-page static site for Yudong Jin. Pure HTML + CSS, no framework, no build step. Deployable directly to Cloudflare Pages.
+Single-page static site for Yudong Jin. Plain HTML + CSS + vanilla JS, no framework, no build step. Deployable directly to Cloudflare Pages.
 
 ## File Structure
 
@@ -23,6 +23,8 @@ assets/
 
 - `--bg`, `--text-primary`, `--text-secondary`, `--text-muted` — neutrals
 - `--accent` — blue links
+- `--accent-bg`, `--accent-border` — link pill hover fill and border
+- `--star-*` — GitHub star badge colors
 - `--border` — dividers
 
 **Type scale** — Lato (300/400/700 only). Available sizes: `--text-xs` (12px), `--text-sm` (14px), `--text-base` (16px), `--text-md` (18px), `--text-lg` (20px). No 500/600 weights — use 400 or 700.
@@ -35,7 +37,7 @@ assets/
 
 - Toggled via `data-theme` attribute on `<html>`
 - Anti-flash inline `<script>` in `<head>` reads `localStorage` and `prefers-color-scheme`
-- JS at bottom of `<body>` handles toggle button + theme-aware badge URLs + avatar swap
+- JS at bottom of `<body>` handles toggle button, avatar swap, and GitHub star count loading
 - Dark theme images dimmed with `filter: brightness(0.82)` on `.pub__thumb`, `.book__thumb`, `.exp-card__icon`
 
 ## Sections & Classes
@@ -68,6 +70,14 @@ Local HTML/CSS badges populated from the GitHub REST API. Each badge uses `.gh-b
 
 - Default style is an informational chip with transparent `--star-bg`, GitHub-like yellow `--star-icon` (`#e3b341` light, `#f2cc60` dark), readable yellow `--star-text` for the count, and a subtle yellow `--star-border`; hover mirrors `.pill` behavior by only adding yellow `--star-hover-bg`
 - Hides the star pill if the GitHub API fails and no cached count is available
+
+## Maintenance Checklist
+
+- Add publications by copying an existing `<article class="pub">`, updating title/authors/links, using a local `assets/pub_<name>.mp4`, and setting `data-repo="owner/repo"` on the star badge when a GitHub repo exists.
+- Add open-source items by copying an existing `<article class="book">`, using a local `assets/book_<name>.jpg`, and setting the star badge `data-repo`.
+- Keep all external links that open new tabs on `target="_blank" rel="noopener noreferrer"`.
+- Use only loaded font weights: 300, 400, or 700 for Lato; 400 for `LXGW WenKai TC`.
+- Before publishing, run a local static server such as `python3 -m http.server 4173 --bind 127.0.0.1` and verify light/dark theme, responsive layout, media loading, and GitHub star badges.
 
 ## Content
 
