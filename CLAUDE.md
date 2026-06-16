@@ -64,10 +64,10 @@ assets/
 
 ## GitHub Star Badges
 
-shields.io badges with theme-aware URL params. Updated on theme toggle via JS regex on `.gh-badge` `src`:
+Local HTML/CSS badges populated from the GitHub REST API. Each badge uses `.gh-badge[data-repo="owner/repo"]` with a decorative `.gh-badge__icon` using the inline Font Awesome Free solid star symbol and `.gh-badge__count`. Display format is a star icon plus count. Star counts are cached in `localStorage` for 6 hours to avoid unnecessary API calls.
 
-- Light: `style=flat&label=Stars&color=0071e3&labelColor=eaf4fe`
-- Dark: `style=flat&label=Stars&color=6aa3f5&labelColor=1c2d44`
+- Default style is an informational chip with transparent `--star-bg`, GitHub-like yellow `--star-icon` (`#e3b341` light, `#f2cc60` dark), readable yellow `--star-text` for the count, and a subtle yellow `--star-border`; hover mirrors `.pill` behavior by only adding yellow `--star-hover-bg`
+- Hides the star pill if the GitHub API fails and no cached count is available
 
 ## Content
 
