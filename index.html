@@ -184,7 +184,7 @@
 
     .pub__thumb {
       flex-shrink: 0;
-      width: 220px;
+      width: 240px;
       aspect-ratio: 16 / 9;
       border-radius: var(--radius);
       object-fit: cover;
@@ -313,7 +313,7 @@
 
     .book__thumb {
       flex-shrink: 0;
-      width: 220px;
+      width: 240px;
       aspect-ratio: 16 / 9;
       border-radius: var(--radius);
       object-fit: cover;
@@ -472,8 +472,8 @@
     /* ─── Theme toggle ───────────────────────────────────────── */
     .theme-toggle {
       margin-left: auto;
-      width: 30px;
-      height: 30px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       border: 1px solid var(--border);
       background: transparent;
@@ -484,15 +484,21 @@
       justify-content: center;
       padding: 0;
       flex-shrink: 0;
-      transition: color 0.15s ease-out, border-color 0.15s ease-out;
+      transition: background-color 0.15s ease-out, color 0.15s ease-out, border-color 0.15s ease-out;
     }
 
     .theme-toggle:hover {
-      color: var(--text-primary);
-      border-color: var(--text-secondary);
+      background-color: var(--accent-bg);
+      color: var(--accent);
+      border-color: var(--accent-border);
     }
 
-    .theme-toggle svg { width: 17px; height: 17px; }
+    .theme-toggle:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .theme-toggle svg { width: 18px; height: 18px; }
 
     /* ─── Responsive ─────────────────────────────────────────── */
     @media (max-width: 560px) {

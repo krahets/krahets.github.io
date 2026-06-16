@@ -45,8 +45,8 @@ assets/
 | Section      | Key classes                                                                                            |
 | ------------ | ------------------------------------------------------------------------------------------------------ |
 | About        | `.about`, `.about__photo`, `.about__bio`                                                               |
-| Publications | `.pub`, `.pub__thumb` (video, 220px, 16:9), `.badge`, `.badge__accent`, `.pub__authors`, `.pub__title` |
-| Open-Source  | `.book`, `.book__thumb` (img, 220px, 16:9), `.badge`, `.book__title`, `.book__desc`                    |
+| Publications | `.pub`, `.pub__thumb` (video, 240px, 16:9), `.badge`, `.badge__accent`, `.pub__authors`, `.pub__title` |
+| Open-Source  | `.book`, `.book__thumb` (img, 240px, 16:9), `.badge`, `.book__title`, `.book__desc`                    |
 | Experience   | `.exp-grid` (2-col), `.exp-card`, `.exp-card__icon` (44×44px), `.exp-card__role/mentor/period`         |
 | Awards       | `.award`, `.award__left`, `.award__name`, `.award__desc`, `.award__year`                               |
 | Footer       | `.site-footer` (flex, copyright left / source code right)                                              |
