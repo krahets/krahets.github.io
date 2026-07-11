@@ -9,6 +9,7 @@ index.html          # Entire website — HTML, CSS, and JS in one file
 assets/
   profile_light.jpg / profile_dark.jpg   # Avatar (theme-aware)
   favicon.png                            # Circular favicon (128×128)
+  pub_pointsplat.mp4                     # Publication preview video
   pub_scal3r.mp4                         # Publication preview video
   pub_diffuman4d.mp4                     # Publication preview video
   pub_envgs.mp4                          # Publication preview video
@@ -87,6 +88,7 @@ Local HTML/CSS badges populated from the GitHub REST API. Each badge uses `.gh-b
 - **GitHub**: krahets | **X**: krahets
 - **Research**: Spatial intelligence, lifting video models into 3D space to perceive the physical world
 - **Publications currently shown**:
+  - `PointSplat` — ECCV 2026, local preview video `assets/pub_pointsplat.mp4`
   - `Scal3R` — CVPR 2026 (`Highlight` accented inline), local preview video `assets/pub_scal3r.mp4`
   - `Diffuman4D` — ICCV 2025, local preview video `assets/pub_diffuman4d.mp4`
   - `EnvGS` — CVPR 2025, local preview video `assets/pub_envgs.mp4`
