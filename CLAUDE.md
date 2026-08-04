@@ -83,7 +83,7 @@ Local HTML/CSS badges populated from the GitHub REST API. Each badge uses `.gh-b
 
 ## Content
 
-- **Owner**: Yudong Jin (靳宇栋), PhD student at Zhejiang University, advised by Prof. Xiaowei Zhou, mentored by Prof. Sida Peng
+- **Owner**: Yudong Jin (靳宇栋), PhD student (expected to graduate in 2027) at Zhejiang University, advised by Prof. Xiaowei Zhou, mentored by Prof. Sida Peng
 - **Education**: M.S. Shanghai Jiao Tong University, B.S. Qianxuesen Class at Xi'an Jiaotong University
 - **Email**: krahetx@gmail.com
 - **GitHub**: krahets | **X**: krahets
