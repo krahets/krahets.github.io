@@ -83,8 +83,8 @@ Local HTML/CSS badges populated from the GitHub REST API. Each badge uses `.gh-b
 
 ## Content
 
-- **Owner**: Yudong Jin (靳宇栋), PhD student (expected to graduate in 2027) at Zhejiang University, advised by Prof. Xiaowei Zhou, mentored by Prof. Sida Peng
-- **Education**: M.S. Shanghai Jiao Tong University, B.S. Qianxuesen Class at Xi'an Jiaotong University
+- **Owner**: Yudong Jin (靳宇栋), PhD student (expected to graduate in 2027) at Zhejiang University, advised by Prof. Xiaowei Zhou and Prof. Sida Peng
+- **Education**: M.Eng. Shanghai Jiao Tong University, B.Eng. Qianxuesen Class at Xi'an Jiaotong University
 - **Email**: krahetx@gmail.com
 - **GitHub**: krahets | **X**: krahets
 - **Research**: Spatial intelligence, lifting video models into 3D space to perceive the physical world
