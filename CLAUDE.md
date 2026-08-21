@@ -9,6 +9,7 @@ index.html          # Entire website — HTML, CSS, and JS in one file
 assets/
   profile_light.jpg / profile_dark.jpg   # Avatar (theme-aware)
   favicon.png                            # Circular favicon (128×128)
+  pub_4danyone.mp4                       # Publication preview video
   pub_lingbot_va_v2.mp4                  # Publication preview video
   pub_pointsplat.mp4                     # Publication preview video
   pub_scal3r.mp4                         # Publication preview video
@@ -89,6 +90,7 @@ Local HTML/CSS badges populated from the GitHub REST API. Each badge uses `.gh-b
 - **GitHub**: krahets | **X**: krahets
 - **Research**: Spatial intelligence, lifting video models into 3D space to perceive the physical world
 - **Publications currently shown**:
+  - `4DAnyone` — SIGGRAPH Asia 2026, local preview video `assets/pub_4danyone.mp4`
   - `LingBot-VA 2.0` — arXiv 2026, local preview video `assets/pub_lingbot_va_v2.mp4`
   - `PointSplat` — ECCV 2026, local preview video `assets/pub_pointsplat.mp4`
   - `Scal3R` — CVPR 2026 (`Highlight` accented inline), local preview video `assets/pub_scal3r.mp4`
