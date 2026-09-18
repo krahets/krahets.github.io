@@ -7,6 +7,7 @@ Single-page static site for Yudong Jin. Plain HTML + CSS + vanilla JS, no framew
 ```
 index.html          # Entire website — HTML, CSS, and JS in one file
 assets/
+  fonts/                                # Local WOFF2 fonts and SIL OFL licenses
   profile_light.jpg / profile_dark.jpg   # Avatar (theme-aware)
   favicon.png                            # Circular favicon (128×128)
   pub_4danyone.mp4                       # Publication preview video
@@ -27,18 +28,39 @@ assets/
 - `--bg`, `--text-primary`, `--text-secondary`, `--text-muted` — neutrals
 - `--accent` — blue links
 - `--accent-bg`, `--accent-border` — link pill hover fill and border
+- `--button-color`, `--button-hover-bg` — section button colors, matching Apple homepage secondary buttons
 - `--star-*` — GitHub star badge colors
 - `--border` — dividers
 
-**Type scale** — Lato (300/400/700 only). Available sizes: `--text-xs` (12px), `--text-sm` (14px), `--text-base` (16px), `--text-md` (18px), `--text-lg` (20px). No 500/600 weights — use 400 or 700.
+**Type scale** — Lato (locally hosted, 400/700 only). Available sizes: `--text-xs` (12px), `--text-sm` (14px), `--text-base` (16px), `--text-md` (18px), `--text-lg` (20px). No 500/600 weights — use 400 or 700.
 
-**Chinese name** — 靳宇栋 uses `LXGW WenKai TC` (Google Fonts, 400 only).
+**Chinese name** — 靳宇栋 uses `LXGW WenKai TC` (locally hosted, 400 only; subset contains exactly 靳宇栋).
 
 **Spacing** — `--max-width: 760px`, fluid padding with `clamp()`.
 
+**Interaction timing** — All button, star bubble, theme-toggle, and contact-link hover transitions share `--interaction-duration: 0.04s` with `ease-out` in both directions. Theme changes remain instantaneous, and reduced-motion preferences still override transitions.
+
+## Local Fonts
+
+All fonts are served from `assets/fonts/` using inline `@font-face` rules with `font-display: swap`. The page has no runtime Google Fonts stylesheet, font requests, or preconnects. Text renders using fallback fonts while local WOFF2 files load. GitHub star counts still use their separate asynchronous API requests.
+
+| Family / subset | Weights | Total size |
+| --- | --- | --- |
+| Lato Latin | 400, 700 | 28,148 bytes |
+| Lato Latin Extended | 400, 700 | 6,016 bytes |
+| LXGW WenKai TC, name-only subset | 400 | 1,912 bytes |
+| **All bundled WOFF2 files** | | **36,076 bytes (35.2 KiB)** |
+
+- Preserve the supplied `unicode-range` declarations: browsers request only the subsets required by the page's text. Lato 300 is unused and is not bundled.
+- Lato files come from Google Fonts v25; the Chinese name subset comes from LXGW WenKai TC v10. The subset contains U+9773 (靳), U+5B87 (宇), and U+680B (栋). If the Chinese name changes or this font is used for other Chinese text, regenerate the subset and update its `unicode-range`.
+- Font files retain their original font-family names. Their SIL Open Font License notices are included in `assets/fonts/LICENSE-Lato.txt` and `assets/fonts/LICENSE-LXGW-WenKai-TC.txt`; preserve these when redistributing the site. Sources: [Lato license](https://github.com/google/fonts/blob/main/ofl/lato/OFL.txt), [LXGW WenKai TC license](https://github.com/google/fonts/blob/main/ofl/lxgwwenkaitc/OFL.txt).
+- To refresh fonts, request the [Lato CSS](https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap) and [name-subset CSS](https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC&text=%E9%9D%B3%E5%AE%87%E6%A0%8B&display=swap) with a modern Chrome User-Agent to obtain WOFF2 URLs. Download the files, retain the provided weights and Unicode ranges, and update the inline `@font-face` rules to local paths.
+- Filenames include the first 10 hexadecimal characters of each file's SHA-256 hash. If font contents change, update the filename and CSS reference so the existing immutable `/assets/*` cache policy does not serve stale files.
+- Verify with Google Fonts domains blocked: the page should still render promptly, `document.fonts.ready` should resolve with local fonts loaded, and both themes and mobile layout should remain correct.
+
 ## Dark Mode
 
-- Toggled via `data-theme` attribute on `<html>`
+- Toggled via `data-theme` attribute on `<html>`. `applyTheme` temporarily disables transitions with `.theme-switching` and flushes styles before restoring them, so page and bubble colors switch together without flashing; normal hover transitions remain enabled.
 - Anti-flash inline `<script>` in `<head>` reads `localStorage` and `prefers-color-scheme`
 - JS at bottom of `<body>` handles toggle button, avatar swap, and GitHub star count loading
 - Dark theme images dimmed with `filter: brightness(0.82)` on `.pub__thumb`, `.book__thumb`, `.exp-card__icon`
@@ -71,22 +93,22 @@ assets/
 
 ## GitHub Star Badges
 
-Local HTML/CSS badges populated from the GitHub REST API. Each badge uses `.gh-badge[data-repo="owner/repo"]` with a decorative `.gh-badge__icon` using the inline Font Awesome Free solid star symbol and `.gh-badge__count`. Display format is a star icon plus count. Star counts are cached in `localStorage` for 6 hours to avoid unnecessary API calls.
+Local HTML/CSS badges populated from the GitHub REST API. Each badge uses `.gh-badge[data-repo="owner/repo"]` with a decorative `.gh-badge__icon` using the inline Font Awesome Free solid star symbol and `.gh-badge__count`. Each repository link groups a blue `.pill` labeled `Code` with a slightly smaller star bubble on the right inside one clickable `.badge-link`. Star counts are cached in `localStorage` for 6 hours to avoid unnecessary API calls.
 
-- Default style is an informational chip with transparent `--star-bg`, GitHub-like yellow `--star-icon` (`#e3b341` light, `#f2cc60` dark), readable yellow `--star-text` for the count, and a subtle yellow `--star-border`; hover mirrors `.pill` behavior by only adding yellow `--star-hover-bg`
-- Hides the star pill if the GitHub API fails and no cached count is available
+- The star bubble uses fully rounded corners, a short left-pointing CSS tip, a 6px gap from Code, no visible background fill, a `--star-border` matching the star icon color, and bold count text (Lato 700; medium gold `#c59630` light, muted gold `#d4b65e` dark). The bubble background matches the page background; the tip inherits that opaque color to mask its seam. Buttons and star counts use 13px (`0.8125rem`) text. Standard `.pill` buttons use `2px 9px` padding; the star bubble uses `1px 8px` to keep generous spacing while remaining smaller than Code. The star icon uses a stronger yellow (`#e3b341` light, `#d4b65e` dark). Button colors match [Apple homepage](https://www.apple.com/) secondary buttons: light `View pricing` uses `#0066cc` text and border; dark `Pre-order` uses `#2997ff`. Both start with a transparent background. Hover and keyboard focus use `#0076df` fill, white text, and a transparent border, with a 40ms ease-out transition in both directions. Within the repository link, Code uses this blue hover style, while the star bubble fills with its star color and both the icon and count turn white. The bubble background and foreground transitions also take 40ms in both directions; its tip inherits the fill and its border stays gold. A visible focus outline surrounds the entire link.
+- Hides only the star bubble if the GitHub API fails and no cached count is available; the Code link remains usable.
 
 ## Maintenance Checklist
 
 - Add publications by copying an existing `<article class="pub">`, updating title/authors/links, using a local `assets/pub_<name>.mp4`, and setting `data-repo="owner/repo"` on the star badge when a GitHub repo exists.
 - Add open-source items by copying an existing `<article class="book">`, using a local `assets/book_<name>.jpg`, and setting the star badge `data-repo`.
 - Keep all external links that open new tabs on `target="_blank" rel="noopener noreferrer"`.
-- Use only loaded font weights: 300, 400, or 700 for Lato; 400 for `LXGW WenKai TC`.
+- Use only loaded font weights: 400 or 700 for Lato; 400 for `LXGW WenKai TC`.
 - Before publishing, run a local static server such as `python3 -m http.server 4173 --bind 127.0.0.1` and verify light/dark theme, responsive layout, media loading, and GitHub star badges.
 
 ## Content
 
-- **Owner**: Yudong Jin (靳宇栋), PhD student (expected to graduate in 2027) at Zhejiang University, advised by Prof. Xiaowei Zhou and Prof. Sida Peng
+- **Owner**: Yudong Jin (靳宇栋), fourth-year PhD student (expected to graduate in 2027) at Zhejiang University, advised by Prof. Xiaowei Zhou and Prof. Sida Peng
 - **Education**: M.Eng. Shanghai Jiao Tong University, B.Eng. Qianxuesen Class at Xi'an Jiaotong University
 - **Email**: krahetx@gmail.com
 - **GitHub**: krahets | **X**: krahets
