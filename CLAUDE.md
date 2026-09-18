@@ -5,7 +5,10 @@ Single-page static site for Yudong Jin. Plain HTML + CSS + vanilla JS, no framew
 ## File Structure
 
 ```
-index.html          # Entire website — HTML, CSS, and JS in one file
+index.html          # Static content, semantic markup, tiny theme bootstrap
+styles.css          # Fonts, themes, shared components and responsive layout
+script.js           # Theme preference and GitHub star counts (deferred)
+_headers            # Cloudflare Pages caching and security headers
 assets/
   fonts/                                # Local WOFF2 fonts and SIL OFL licenses
   profile_light.jpg / profile_dark.jpg   # Avatar (theme-aware)
@@ -26,13 +29,13 @@ assets/
 **Colors** — OKLCH perceptually uniform color tokens, defined on `:root` and `[data-theme="dark"]`:
 
 - `--bg`, `--text-primary`, `--text-secondary`, `--text-muted` — neutrals
-- `--accent` — blue links
-- `--accent-bg`, `--accent-border` — link pill hover fill and border
-- `--button-color`, `--button-hover-bg` — section button colors, matching Apple homepage secondary buttons
+- `--accent` — blue links and button text/borders
+- `--accent-bg`, `--accent-border` — theme-toggle hover fill and border
+- `--button-hover-bg` — filled button hover color, matching Apple homepage secondary buttons
 - `--star-*` — GitHub star badge colors
 - `--border` — dividers
 
-**Type scale** — Lato (locally hosted, 400/700 only). Available sizes: `--text-xs` (12px), `--text-sm` (14px), `--text-base` (16px), `--text-md` (18px), `--text-lg` (20px). No 500/600 weights — use 400 or 700.
+**Type scale** — Lato (locally hosted, 400/700 only). Sizes: `--text-button` (13px), `--text-sm` (14px), `--text-base` (16px), `--text-lg` (20px), and fluid `--text-name` (24–32px). No 500/600 weights — use 400 or 700.
 
 **Chinese name** — 靳宇栋 uses `LXGW WenKai TC` (locally hosted, 400 only; subset contains exactly 靳宇栋).
 
@@ -42,7 +45,7 @@ assets/
 
 ## Local Fonts
 
-All fonts are served from `assets/fonts/` using inline `@font-face` rules with `font-display: swap`. The page has no runtime Google Fonts stylesheet, font requests, or preconnects. Text renders using fallback fonts while local WOFF2 files load. GitHub star counts still use their separate asynchronous API requests.
+All fonts are served from `assets/fonts/` using `@font-face` rules in `styles.css` with `font-display: swap`. The page has no runtime Google Fonts stylesheet, font requests, or preconnects. Text renders using fallback fonts while local WOFF2 files load. GitHub star counts still use their separate asynchronous API requests.
 
 | Family / subset | Weights | Total size |
 | --- | --- | --- |
@@ -54,15 +57,16 @@ All fonts are served from `assets/fonts/` using inline `@font-face` rules with `
 - Preserve the supplied `unicode-range` declarations: browsers request only the subsets required by the page's text. Lato 300 is unused and is not bundled.
 - Lato files come from Google Fonts v25; the Chinese name subset comes from LXGW WenKai TC v10. The subset contains U+9773 (靳), U+5B87 (宇), and U+680B (栋). If the Chinese name changes or this font is used for other Chinese text, regenerate the subset and update its `unicode-range`.
 - Font files retain their original font-family names. Their SIL Open Font License notices are included in `assets/fonts/LICENSE-Lato.txt` and `assets/fonts/LICENSE-LXGW-WenKai-TC.txt`; preserve these when redistributing the site. Sources: [Lato license](https://github.com/google/fonts/blob/main/ofl/lato/OFL.txt), [LXGW WenKai TC license](https://github.com/google/fonts/blob/main/ofl/lxgwwenkaitc/OFL.txt).
-- To refresh fonts, request the [Lato CSS](https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap) and [name-subset CSS](https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC&text=%E9%9D%B3%E5%AE%87%E6%A0%8B&display=swap) with a modern Chrome User-Agent to obtain WOFF2 URLs. Download the files, retain the provided weights and Unicode ranges, and update the inline `@font-face` rules to local paths.
-- Filenames include the first 10 hexadecimal characters of each file's SHA-256 hash. If font contents change, update the filename and CSS reference so the existing immutable `/assets/*` cache policy does not serve stale files.
+- To refresh fonts, request the [Lato CSS](https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap) and [name-subset CSS](https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC&text=%E9%9D%B3%E5%AE%87%E6%A0%8B&display=swap) with a modern Chrome User-Agent to obtain WOFF2 URLs. Download the files, retain the provided weights and Unicode ranges, and update the `@font-face` rules in `styles.css` to local paths.
+- Filenames include the first 10 hexadecimal characters of each file's SHA-256 hash. When replacing a font, update the hash and its CSS reference together.
 - Verify with Google Fonts domains blocked: the page should still render promptly, `document.fonts.ready` should resolve with local fonts loaded, and both themes and mobile layout should remain correct.
 
 ## Dark Mode
 
 - Toggled via `data-theme` attribute on `<html>`. `applyTheme` temporarily disables transitions with `.theme-switching` and flushes styles before restoring them, so page and bubble colors switch together without flashing; normal hover transitions remain enabled.
-- Anti-flash inline `<script>` in `<head>` reads `localStorage` and `prefers-color-scheme`
-- JS at bottom of `<body>` handles toggle button, avatar swap, and GitHub star count loading
+- A small inline bootstrap before the stylesheet resolves the initial theme. Only `light`/`dark` preferences are valid; missing, invalid or inaccessible storage falls back to the system preference.
+- Deferred `script.js` initializes theme behavior and star counts inside a private scope. Theme icons are static SVGs in HTML; CSS chooses the visible icon and JS updates `aria-pressed` and the avatar.
+- Follow system theme changes until the user explicitly toggles. A manual choice remains effective for the session even if storage writes fail.
 - Dark theme images dimmed with `filter: brightness(0.82)` on `.pub__thumb`, `.book__thumb`, `.exp-card__icon`
 
 ## Sections & Classes
@@ -93,10 +97,22 @@ All fonts are served from `assets/fonts/` using inline `@font-face` rules with `
 
 ## GitHub Star Badges
 
-Local HTML/CSS badges populated from the GitHub REST API. Each badge uses `.gh-badge[data-repo="owner/repo"]` with a decorative `.gh-badge__icon` using the inline Font Awesome Free solid star symbol and `.gh-badge__count`. Each repository link groups a blue `.pill` labeled `Code` with a slightly smaller star bubble on the right inside one clickable `.badge-link`. Star counts are cached in `localStorage` for 6 hours to avoid unnecessary API calls.
+Each repository link contains a `Code` pill and a smaller capsule with a short left-pointing tip. The star icon uses the shared SVG sprite. Mark the bubble with `.gh-badge[data-repo="owner/repo"]`, `hidden`, and `role="img"`; its `.gh-badge__count` starts empty. The Code link works without JavaScript or the API.
 
-- The star bubble uses fully rounded corners, a short left-pointing CSS tip, a 6px gap from Code, no visible background fill, a `--star-border` matching the star icon color, and bold count text (Lato 700; medium gold `#c59630` light, muted gold `#d4b65e` dark). The bubble background matches the page background; the tip inherits that opaque color to mask its seam. Buttons and star counts use 13px (`0.8125rem`) text. Standard `.pill` buttons use `2px 9px` padding; the star bubble uses `1px 8px` to keep generous spacing while remaining smaller than Code. The star icon uses a stronger yellow (`#e3b341` light, `#d4b65e` dark). Button colors match [Apple homepage](https://www.apple.com/) secondary buttons: light `View pricing` uses `#0066cc` text and border; dark `Pre-order` uses `#2997ff`. Both start with a transparent background. Hover and keyboard focus use `#0076df` fill, white text, and a transparent border, with a 40ms ease-out transition in both directions. Within the repository link, Code uses this blue hover style, while the star bubble fills with its star color and both the icon and count turn white. The bubble background and foreground transitions also take 40ms in both directions; its tip inherits the fill and its border stays gold. A visible focus outline surrounds the entire link.
-- Hides only the star bubble if the GitHub API fails and no cached count is available; the Code link remains usable.
+- The bubble appears only when a valid count is available. `script.js` sets its compact count and accessible label with the full count and repository name.
+- Cache valid nonnegative integer counts in `localStorage` under `github-stars:owner/repo` for six hours. Preserve this key format across updates. Corrupt counts/timestamps are ignored; a future timestamp never qualifies as a fresh cache entry.
+- Display cached data immediately. Refresh stale counts in the background with a five-second request timeout. Network/API errors retain stale counts; without a cache, the bubble stays hidden. Storage failures do not break theme controls or API loading.
+- Default bubble fill matches the page to mask the tip seam. Its border and star share the theme's gold color; the count has its own token for light-theme readability.
+- Hover/focus fills Code blue and the bubble gold, with white text/icon. All color transitions use the shared 40ms token; keyboard focus outlines the whole link. Exact colors and padding live in `styles.css`.
+
+## Structure and Caching
+
+- Edit content directly in `index.html`. Publication and book titles are `h3` headings under section `h2` headings; the page's sections are inside `main`, with the site footer outside it.
+- Shared CSS selectors cover publication/book layouts and thumbnails; keep content-specific differences in their own rules. The Chinese name uses `.about__name-cn`, with no inline presentation styles.
+- Below-fold book and experience images have explicit dimensions and native lazy loading. Publication videos keep autoplay/loop behavior and use `preload="metadata"`; no media assets are re-encoded as part of code maintenance.
+- `_headers` allows caching but requires revalidation for every file. Media filenames are reused during updates, so do not restore year-long immutable caching for all of `/assets/`. CSS and JS are plain files without a build or filename-versioning pipeline and must also revalidate.
+- Cloudflare Pages applies `_headers`; Python's local static server does not. Font hashes are retained for provenance, but use the same revalidation policy.
+- No framework, bundler, runtime content templates, package installation, or build step is needed. Existing tool metadata such as `skills-lock.json` is unrelated to page loading.
 
 ## Maintenance Checklist
 
@@ -104,7 +120,9 @@ Local HTML/CSS badges populated from the GitHub REST API. Each badge uses `.gh-b
 - Add open-source items by copying an existing `<article class="book">`, using a local `assets/book_<name>.jpg`, and setting the star badge `data-repo`.
 - Keep all external links that open new tabs on `target="_blank" rel="noopener noreferrer"`.
 - Use only loaded font weights: 400 or 700 for Lato; 400 for `LXGW WenKai TC`.
-- Before publishing, run a local static server such as `python3 -m http.server 4173 --bind 127.0.0.1` and verify light/dark theme, responsive layout, media loading, and GitHub star badges.
+- Preview with `python3 -m http.server 4173 --bind 127.0.0.1`. Check desktop/mobile layout, light/dark switching, keyboard focus, local fonts and media.
+- Check star counts with fresh/stale/corrupt cache data, API failure and timeout; Code must remain usable. Check theme behavior with blocked storage, an invalid saved theme and system-theme changes.
+- Run `node --check script.js` and `git diff --check`. Keep temporary browser-check scripts/screenshots outside the repository; no test-tool dependency is required to serve the site.
 
 ## Content
 
