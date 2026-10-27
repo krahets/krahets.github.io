@@ -30,9 +30,9 @@ assets/
 
 - `--bg`, `--text-primary`, `--text-secondary`, `--text-muted` — neutrals
 - `--accent` — blue links and button text/borders
-- `--accent-bg`, `--accent-border` — theme-toggle hover fill and border
+- `--accent-bg`, `--accent-border` — theme-toggle hover fill and border; the border token also separates Code from its star count
 - `--button-hover-bg` — filled button hover color, matching Apple homepage secondary buttons
-- `--star-*` — GitHub star badge colors
+- `--star-icon` — GitHub star icon color
 - `--border` — dividers
 
 **Type scale** — Lato (locally hosted, 400/700 only). Sizes: `--text-button` (13px), `--text-sm` (14px), `--text-base` (16px), `--text-lg` (20px), and fluid `--text-name` (24–32px). No 500/600 weights — use 400 or 700.
@@ -41,7 +41,7 @@ assets/
 
 **Spacing** — `--max-width: 760px`, fluid padding with `clamp()`.
 
-**Interaction timing** — All button, star bubble, theme-toggle, and contact-link hover transitions share `--interaction-duration: 0.04s` with `ease-out` in both directions. Theme changes remain instantaneous, and reduced-motion preferences still override transitions.
+**Interaction timing** — All button, star segment, theme-toggle, and contact-link hover transitions share `--interaction-duration: 0.04s` with `ease-out` in both directions. Theme changes remain instantaneous, and reduced-motion preferences still override transitions.
 
 ## Local Fonts
 
@@ -63,7 +63,7 @@ All fonts are served from `assets/fonts/` using `@font-face` rules in `styles.cs
 
 ## Dark Mode
 
-- Toggled via `data-theme` attribute on `<html>`. `applyTheme` temporarily disables transitions with `.theme-switching` and flushes styles before restoring them, so page and bubble colors switch together without flashing; normal hover transitions remain enabled.
+- Toggled via `data-theme` attribute on `<html>`. `applyTheme` temporarily disables transitions with `.theme-switching` and flushes styles before restoring them, so page and button colors switch together without flashing; normal hover transitions remain enabled.
 - A small inline bootstrap before the stylesheet resolves the initial theme. Only `light`/`dark` preferences are valid; missing, invalid or inaccessible storage falls back to the system preference.
 - Deferred `script.js` initializes theme behavior and star counts inside a private scope. Theme icons are static SVGs in HTML; CSS chooses the visible icon and JS updates `aria-pressed` and the avatar.
 - Follow system theme changes until the user explicitly toggles. A manual choice remains effective for the session even if storage writes fail.
@@ -97,13 +97,13 @@ All fonts are served from `assets/fonts/` using `@font-face` rules in `styles.cs
 
 ## GitHub Star Badges
 
-Each repository link contains a `Code` pill and a smaller capsule with a short left-pointing tip. The star icon uses the shared SVG sprite. Mark the bubble with `.gh-badge[data-repo="owner/repo"]`, `hidden`, and `role="img"`; its `.gh-badge__count` starts empty. The Code link works without JavaScript or the API.
+Each repository link is one `.pill.badge-link` button containing `Code`, a short vertical divider, and a gold star with its count. Do not add a GitHub icon before Code. The star icon uses the shared SVG sprite. Mark the star segment with `.gh-badge[data-repo="owner/repo"]`, `hidden`, and `role="img"`; its `.gh-badge__count` starts empty. The Code link works without JavaScript or the API.
 
-- The bubble appears only when a valid count is available. `script.js` sets its compact count and accessible label with the full count and repository name.
+- The star segment and divider appear only when a valid count is available. `script.js` sets its compact count and accessible label with the full count and repository name.
 - Cache valid nonnegative integer counts in `localStorage` under `github-stars:owner/repo` for six hours. Preserve this key format across updates. Corrupt counts/timestamps are ignored; a future timestamp never qualifies as a fresh cache entry.
-- Display cached data immediately. Refresh stale counts in the background with a five-second request timeout. Network/API errors retain stale counts; without a cache, the bubble stays hidden. Storage failures do not break theme controls or API loading.
-- Default bubble fill matches the page to mask the tip seam. Its border and star share the theme's gold color; the count has its own token for light-theme readability.
-- Hover/focus fills Code blue and the bubble gold, with white text/icon. All color transitions use the shared 40ms token; keyboard focus outlines the whole link. Exact colors and padding live in `styles.css`.
+- Display cached data immediately. Refresh stale counts in the background with a five-second request timeout. Network/API errors retain stale counts; without a cache, the star segment and divider stay hidden. Storage failures do not break theme controls or API loading.
+- The whole button shares the blue outline, rounded shape, font size, and height of adjacent Project/Paper pills. The divider uses `--accent-border`, the star uses `--star-icon`, and the count inherits the Code text color at regular weight (400).
+- Hover/focus fills the whole button blue, with white text/icon and a translucent white divider. All color transitions use the shared 40ms token; keyboard focus outlines the whole link. Exact colors and padding live in `styles.css`.
 
 ## Structure and Caching
 

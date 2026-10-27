@@ -100,7 +100,7 @@
       showCount(data.stargazers_count);
       writeStorage(key, JSON.stringify({ count: data.stargazers_count, updatedAt: Date.now() }));
     } catch {
-      // Keep stale counts if available; otherwise the bubble stays hidden.
+      // Keep stale counts if available; otherwise the star segment stays hidden.
       // The static Code link works regardless of API or storage availability.
     } finally {
       clearTimeout(timeout);
